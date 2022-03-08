@@ -13,7 +13,7 @@ pylint:
 #
 # NOTE: Use `extend-exclude` instead of `exclude`. If `exclude` is provided, it stops black from
 # reading gitignore. `extend-exclude` is layered on top of gitignore. See:
-#   https://black.readthedocs.io/en/stable/usage_and_configuration/file_collection_and_discovery.html#gitignore 
+#   https://black.readthedocs.io/en/stable/usage_and_configuration/file_collection_and_discovery.html#gitignore
 black:
 	black --fast \
     --extend-exclude="examples/docs_snippets|snapshots" \
@@ -46,3 +46,9 @@ check_isort:
 
 yamllint:
 	yamllint -c .yamllint.yaml --strict `git ls-files 'helm/**/*.yml' 'helm/**/*.yaml' ':!:helm/**/templates/*.yml' ':!:helm/**/templates/*.yaml'`
+
+setup-dev-env:
+	python  ${SCRIPT_DIR}/install_dev_python_modules.py -qqq
+
+setup-dev-env-verbose:
+	python  ${SCRIPT_DIR}/install_dev_python_modules.py
